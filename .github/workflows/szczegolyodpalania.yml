@@ -1,0 +1,17 @@
+name: Lowca Allegro
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"  # co 5 minut
+  workflow_dispatch:
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - run: pip install requests beautifulsoup4 python-telegram-bot
+      - run: python bot.py
